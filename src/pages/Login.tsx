@@ -17,7 +17,9 @@ export default function Login() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    if (!login(email, password)) {
+    if (login(email, password)) {
+      navigate('/');
+    } else {
       setError('Invalid email or password');
     }
   };
