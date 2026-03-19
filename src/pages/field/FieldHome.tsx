@@ -8,6 +8,7 @@ import { Briefcase, Receipt, ClipboardList, LogOut, Truck } from 'lucide-react';
 
 export default function FieldHome() {
   const { user, logout } = useAuth();
+  if (!user) return <Navigate to="/login" replace />;
   const bakkie = MOCK_BAKKIES.find(b => b.id === user?.assignedBakkie);
 
   return (
