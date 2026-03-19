@@ -2,7 +2,7 @@ import { useAuth } from '@/lib/auth-context';
 import { MOCK_BAKKIES } from '@/lib/mock-data';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Briefcase, Receipt, ClipboardList, LogOut, Truck } from 'lucide-react';
 
 export default function FieldHome() {
