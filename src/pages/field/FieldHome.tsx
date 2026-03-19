@@ -6,8 +6,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Briefcase, Receipt, ClipboardList, LogOut, Truck } from 'lucide-react';
 
 export default function FieldHome() {
+  const navigate = useNavigate();
   const { user, logout } = useAuth();
   const bakkie = MOCK_BAKKIES.find(b => b.id === user?.assignedBakkie);
+  const handleLogout = () => { logout(); navigate('/login'); };
 
   return (
     <div className="min-h-screen bg-background p-4 max-w-lg mx-auto">
