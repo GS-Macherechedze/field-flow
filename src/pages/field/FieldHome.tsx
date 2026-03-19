@@ -22,7 +22,7 @@ export default function FieldHome() {
             </p>
           )}
         </div>
-        <Button variant="ghost" size="icon" onClick={logout}>
+        <Button variant="ghost" size="icon" onClick={handleLogout}>
           <LogOut className="w-5 h-5" />
         </Button>
       </div>
