@@ -1,4 +1,3 @@
-import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/lib/auth-context';
 import { MOCK_BAKKIES } from '@/lib/mock-data';
 import { Button } from '@/components/ui/button';
