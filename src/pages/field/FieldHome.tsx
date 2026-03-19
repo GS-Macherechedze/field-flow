@@ -2,12 +2,14 @@ import { useAuth } from '@/lib/auth-context';
 import { MOCK_BAKKIES } from '@/lib/mock-data';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Briefcase, Receipt, ClipboardList, LogOut, Truck } from 'lucide-react';
 
 export default function FieldHome() {
+  const navigate = useNavigate();
   const { user, logout } = useAuth();
   const bakkie = MOCK_BAKKIES.find(b => b.id === user?.assignedBakkie);
+  const handleLogout = () => { logout(); navigate('/login'); };
 
   return (
     <div className="min-h-screen bg-background p-4 max-w-lg mx-auto">
@@ -20,7 +22,7 @@ export default function FieldHome() {
             </p>
           )}
         </div>
-        <Button variant="ghost" size="icon" onClick={logout}>
+        <Button variant="ghost" size="icon" onClick={handleLogout}>
           <LogOut className="w-5 h-5" />
         </Button>
       </div>

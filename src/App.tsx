@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/lib/auth-context";
+import RequireAuth from "@/components/RequireAuth";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import FieldHome from "./pages/field/FieldHome";
@@ -22,12 +23,12 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/field" element={<FieldHome />} />
-          <Route path="/field/new-job" element={<NewJob />} />
-          <Route path="/field/new-expense" element={<NewExpense />} />
-          <Route path="/field/my-jobs" element={<MyJobs />} />
-          <Route path="/office" element={<OfficeDashboard />} />
-          <Route path="/office/clients" element={<ClientList />} />
+          <Route path="/field" element={<RequireAuth><FieldHome /></RequireAuth>} />
+          <Route path="/field/new-job" element={<RequireAuth><NewJob /></RequireAuth>} />
+          <Route path="/field/new-expense" element={<RequireAuth><NewExpense /></RequireAuth>} />
+          <Route path="/field/my-jobs" element={<RequireAuth><MyJobs /></RequireAuth>} />
+          <Route path="/office" element={<RequireAuth><OfficeDashboard /></RequireAuth>} />
+          <Route path="/office/clients" element={<RequireAuth><ClientList /></RequireAuth>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -6,13 +6,15 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Briefcase, Receipt, CheckCircle, LogOut, Users, MapPin, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function OfficeDashboard() {
+  const navigate = useNavigate();
   const { user, logout } = useAuth();
   const isReadOnly = user?.role === 'ceo';
+  const handleLogout = () => { logout(); navigate('/login'); };
   const [bakkieFilter, setBakkieFilter] = useState<string>('all');
 
   const today = new Date().toISOString().split('T')[0];
@@ -38,7 +40,7 @@ export default function OfficeDashboard() {
               </Link>
             </Button>
           )}
-          <Button variant="ghost" size="icon" onClick={logout}>
+          <Button variant="ghost" size="icon" onClick={handleLogout}>
             <LogOut className="w-5 h-5" />
           </Button>
         </div>
